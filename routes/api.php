@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,9 @@ Route::post('/auth/token', [AuthController::class, 'token']);
 // Routes that need authentication
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [UserController::class, 'show']);
+
+    Route::get('orders', [OrderController::class, 'index']);
+    Route::post('orders', [OrderController::class, 'store']);
 });
 
 // Application routes
